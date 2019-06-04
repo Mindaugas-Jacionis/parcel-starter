@@ -1,0 +1,11 @@
+#npm
+/node_modules
+
+#build output
+/build
+/dist
+/public
+
+#misc
+.cache
+.vscode
