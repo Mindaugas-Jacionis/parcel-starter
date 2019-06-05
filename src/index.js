@@ -1,18 +1,36 @@
-const timeModule = require('./sample-module');
+const contacts = require('./contacts');
 
-const monday = new Date().getDate() - new Date().getDay() + 1;
-const year = new Date().getFullYear();
-const month = new Date().getMonth() + 1;
-const now = new Date().getTime();
-const mondayInMilliseconds = new Date(`${year}-${month}-${monday}`);
+function render() {
+  const addressBook = contacts.getContacts();
+  const app = document.getElementById('app');
 
-const howLongSinceMonday = timeModule.milisecondsToHours(now - mondayInMilliseconds);
+  addressBook.forEach(contact => {
+    const container = document.createElement('div');
+    const name = document.createElement('span');
+    const phone = document.createElement('span');
 
-console.log(
-  `%c ${howLongSinceMonday} hours have passed since Monday`,
-  'background: #222999; color: #bada55',
-);
-console.log(
-  `%c Current time in miliseconds is: ${timeModule.timestamp()}`,
-  'background: #e1e1e1; color: #bf2ef3; font-weight: 700',
-);
+    name.textContent = contact.name;
+    phone.textContent = contact.phone;
+
+    container.appendChild(name);
+    container.appendChild(phone);
+    app.appendChild(container);
+  });
+}
+
+function addFormListener(e) {
+  e.preventDefault();
+
+  const name = document.querySelector('#add-form input[name="name"]').value;
+  const phone = document.querySelector('#add-form input[name="phone"]').value;
+
+  contacts.addContact({ name, phone });
+  render();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('add-form');
+
+  form.addEventListener('submit', addFormListener);
+  render();
+});
