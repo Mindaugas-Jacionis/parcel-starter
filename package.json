@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Mindaugas-Jacionis/parcel-starter#readme",
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "parcel": "^1.12.3",
+    "sass": "^1.20.3"
   }
 }

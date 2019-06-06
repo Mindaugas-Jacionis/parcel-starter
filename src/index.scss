@@ -1,0 +1,22 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #e1e1e1;
+} 
+
+#app div {
+  span {
+    margin-right: 25px;
+  }
+  button {
+    background: transparent;
+    box-shadow: none;
+    border: 1px solid #f9f9f9;
+    border-radius: 3px;
+    cursor: pointer;
+
+    &:hover {
+      background: #f9f9f9;
+    }
+  }
+}
