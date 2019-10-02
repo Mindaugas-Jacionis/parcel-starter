@@ -4,8 +4,10 @@
   "description": "Minimal starter setup with parcel for my students",
   "scripts": {
     "clean": "rm -rf public build dist",
-    "build": "npm run clean && parcel build ./src/index.html --out-dir build --public-url ./ --no-source-maps",
-    "dev": "npm run clean && parcel ./src/index.html"
+    "prebuild": "npm run clean",
+    "build": "parcel build ./src/index.html --out-dir build --public-url ./ --no-source-maps",
+    "predev": "npm run clean",
+    "dev": "parcel ./src/index.html"
   },
   "repository": {
     "type": "git",
