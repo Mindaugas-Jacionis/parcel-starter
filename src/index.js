@@ -1,18 +1,48 @@
-const timeModule = require('./sample-module');
+require("reset-css");
+// require("nes.css/scss/");
+const { createDomElement, addToDom } = require("./utils");
+const { getAddressbook, addNewEntry, removeEntry } = require("./addressbook-manager");
 
-const monday = new Date().getDate() - new Date().getDay() + 1;
-const year = new Date().getFullYear();
-const month = new Date().getMonth() + 1;
-const now = new Date().getTime();
-const mondayInMilliseconds = new Date(`${year}-${month}-${monday}`);
+function render() {
+  const app = document.getElementById("app");
+  const addressbook = getAddressbook();
 
-const howLongSinceMonday = timeModule.milisecondsToHours(now - mondayInMilliseconds);
+  app.innerHTML = null;
 
-console.log(
-  `%c ${howLongSinceMonday} hours have passed since Monday`,
-  'background: #222999; color: #bada55',
-);
-console.log(
-  `%c Current time in miliseconds is: ${timeModule.timestamp()}`,
-  'background: #e1e1e1; color: #bf2ef3; font-weight: 700',
-);
+  addressbook.forEach((person, index) => {
+    const entryElement = createDomElement("div", {
+      className: "addressbook-entry"
+    });
+    const name = createDomElement("p", { textContent: person.name });
+    const phone = createDomElement("p", { textContent: person.phone });
+    const deleteButton = createDomElement("button", {
+      type: "button",
+      textContent: "Delete 🗑️",
+      onclick: () => {
+        removeEntry(index);
+        render();
+      }
+    });
+
+    addToDom(app, entryElement);
+    addToDom(entryElement, name);
+    addToDom(entryElement, phone);
+    addToDom(entryElement, deleteButton);
+  });
+}
+
+function submitNewAddress(event) {
+  event.preventDefault();
+
+  const allInputs = event.target.querySelectorAll("input");
+  const newEntryData = [...allInputs].reduce((result, input) => {
+    return { ...result, [input.name]: input.value };
+  }, {});
+
+  addNewEntry(newEntryData);
+  render();
+}
+
+document.getElementById("new-address").addEventListener("submit", submitNewAddress);
+
+render();

@@ -25,6 +25,11 @@
   },
   "homepage": "https://github.com/Mindaugas-Jacionis/parcel-starter#readme",
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "parcel": "^1.12.3",
+    "sass": "^1.23.7"
+  },
+  "dependencies": {
+    "nes.css": "^2.2.1",
+    "reset-css": "^5.0.1"
   }
 }
