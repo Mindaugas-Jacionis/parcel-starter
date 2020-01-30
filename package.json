@@ -1,13 +1,13 @@
 {
   "name": "parcel-starter",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Minimal starter setup with parcel for my students",
   "scripts": {
     "clean": "rm -rf public build dist",
     "prebuild": "npm run clean",
     "build": "parcel build ./src/index.html --out-dir build --public-url ./ --no-source-maps",
     "predev": "npm run clean",
-    "dev": "parcel ./src/index.html"
+    "develop": "parcel ./src/index.html"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/Mindaugas-Jacionis/parcel-starter#readme",
   "devDependencies": {
-    "parcel": "^1.12.3"
+    "parcel-bundler": "^1.12.4"
   }
 }
