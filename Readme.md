@@ -20,7 +20,7 @@
 
 ### Commands
 
-- `npm run dev` or `yarn develop` - starts development server. Development build is served and can be accessed via [http://localhost:1234](http://localhost:1234).
+- `npm run develop` or `yarn develop` - starts development server. Development build is served and can be accessed via [http://localhost:1234](http://localhost:1234).
   Output can be seen in `/dist` directory.
 - `npm run build` or `yarn build` - build production version of the app. This can be then deployed to production server.
   Output can be seen in `/build` directory.
