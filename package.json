@@ -25,6 +25,13 @@
   },
   "homepage": "https://github.com/Mindaugas-Jacionis/parcel-starter#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "@fullhuman/postcss-purgecss": "^3.0.0",
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.1.2",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^7.0.35",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
   }
 }
